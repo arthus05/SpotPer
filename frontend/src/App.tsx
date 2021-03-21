@@ -1,8 +1,6 @@
-import React from 'react';
+function App(): JSX.Element {
 
-
-
-function App() {
+  const user = []
   return (
     <div className="App">
        <h1>Eaeee tudo bem ?</h1>
