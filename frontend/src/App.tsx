@@ -1,9 +1,14 @@
+import {GlobalStyle} from '../src/styles/global'
+import {Header} from './components/Header'
+
 function App(): JSX.Element {
 
-  const user = []
+ 
   return (
     <div className="App">
-       <h1>Eaeee tudo bem ?</h1>
+      <Header/>
+     
+       <GlobalStyle/>
     </div>
   );
 }
