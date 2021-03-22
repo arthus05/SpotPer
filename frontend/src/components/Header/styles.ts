@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// eslint-disable-next-line import/prefer-default-export
+
 export const ContainerHeader = styled.header`
   display: flex;
   justify-content: space-between;
@@ -16,6 +16,7 @@ export const ContainerHeader = styled.header`
 
    img {
      height: 50px;
+     padding: 7px 0;
    }
    h1 {
     font-family: 'Roboto';
@@ -82,6 +83,4 @@ export const ContainerHeader = styled.header`
     }
   }
    
-
-// eslint-disable-next-line eol-last
 `;

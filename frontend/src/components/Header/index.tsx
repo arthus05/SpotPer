@@ -1,12 +1,13 @@
 import { BiSearchAlt } from "react-icons/bi";
 import { ContainerHeader } from "./styles";
+import logo from '../../utils/imagens/logoSpotpng.png'
 
-// eslint-disable-next-line import/prefer-default-export
+
 export function Header() {
   return (
     <ContainerHeader>
       <section className="container__logo">
-        {/* <img src={logo} alt=""/> */}
+        <img src={logo} alt=""/>
       </section>
 
       <section className="container__central">
