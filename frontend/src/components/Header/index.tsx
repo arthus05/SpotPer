@@ -1,6 +1,7 @@
 import { BiSearchAlt } from "react-icons/bi";
 import { ContainerHeader } from "./styles";
 import logo from '../../utils/imagens/logoSpotpng.png'
+import Icon from '../../utils/imagens/iconSearch.svg'
 
 
 export function Header() {
@@ -31,8 +32,9 @@ export function Header() {
       </section>
 
       <div id="divBusca">
-        <input type="text" id="txtBusca" />
-        <BiSearchAlt />
+        <input type="text" id="txtBusca" placeholder="Buscar"/>
+        <img src={Icon} alt=""/>
+        
       </div>
     </ContainerHeader>
   );

@@ -9,10 +9,10 @@ export const ContainerHeader = styled.header`
   padding: 0 1.5rem;
   
   background: var(--background);
-  border-bottom: 1px solid var(--backgroundSecondary);
+  /* border-bottom: 1px solid var(--backgroundSecondary); */
  
   width: 100%;
-  height: 50px;
+  height: 90px;
 
    img {
      height: 50px;
@@ -30,15 +30,19 @@ export const ContainerHeader = styled.header`
      justify-content: space-between;
      align-items: center;
    
-    background-color: #B591D1;
+    background-color: none;
     filter: brightness(0.8);
-    border:solid 1px;
+    border:solid 1px #808080;
     border-radius: 9px;
     padding: 0 7px;
    
     
     width: 241px;
     height: 30px;
+
+    img {
+      height: 30px;
+    }
   }
 
   #txtBusca{
@@ -49,13 +53,17 @@ export const ContainerHeader = styled.header`
     background-color:transparent;
     
     padding: 0 0 0 7px;
-    font-style:italic;
-    font-size:18px;
+ 
+    font-size:1rem;
     border:none;
+    color: var(--text)
   
   }
 
   .container__central {
+    display: flex;
+    align-items: center;
+    height: 100%;
     ul {
       display: flex;
       align-items: center;
