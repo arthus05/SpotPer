@@ -64,6 +64,7 @@ export const ContainerHeader = styled.header`
     display: flex;
     align-items: center;
     height: 100%;
+ 
     ul {
       display: flex;
       align-items: center;
@@ -79,10 +80,12 @@ export const ContainerHeader = styled.header`
 
         margin: 0 2rem 0 0;
 
-        button {
+        a {
           background: none;
           color: var(--text);
           font-weight: 500;
+          text-decoration: none;
+          
           margin: 0;
           border: none;
         }

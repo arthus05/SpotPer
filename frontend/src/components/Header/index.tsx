@@ -1,7 +1,10 @@
-import { BiSearchAlt } from "react-icons/bi";
+import React from "react";
+import { Link } from "react-router-dom";
+
 import { ContainerHeader } from "./styles";
 import logo from '../../utils/imagens/logoSpotpng.png'
 import Icon from '../../utils/imagens/iconSearch.svg'
+
 
 
 export function Header() {
@@ -14,19 +17,20 @@ export function Header() {
       <section className="container__central">
         <ul>
           <li>
-            <button>HOME</button>
+          <Link to="/" >HOME</Link>
           </li>
           <li>
-            <button>PLAYLISTS</button>
+          <Link to="/playlists" >PLAYLIST</Link>
+
           </li>
           <li>
-            <button>ALBUMS</button>
+          <Link to="/albums" >ALBUMS</Link>
           </li>
           <li>
-            <button>ARTISTAS</button>
+          <Link to="/artistas" >ARTISTAS</Link>
           </li>
           <li>
-            <button>GRAVADORAS</button>
+          <Link to="/gravadoras" >GRAVADORAS</Link>
           </li>
         </ul>
       </section>

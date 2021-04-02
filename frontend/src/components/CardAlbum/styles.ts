@@ -12,19 +12,21 @@ export const ContainerAlbum = styled.button`
    padding: 10px;
    border-radius: 6px;
    
-   height: 250px;
+   max-height: 250px;
+   height: auto;
    width:180px;
    margin: 0 5px;
    .img_album {
-       width: 100%;
+       width: 125px;
+       max-height: 125px;
    }
    h1 {
-       font-size: 1rem;
+       font-size: 0.9rem;
        text-align: left;
    
    }
    h2 {
-       font-size: 0.9rem;
+       font-size: 0.8rem;
        color: var(--textSecun);
        font-weight: 500;
        text-align: left;
