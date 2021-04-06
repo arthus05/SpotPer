@@ -12,7 +12,7 @@ export const ContainerAlbum = styled.button`
    padding: 10px;
    border-radius: 6px;
    
-   max-height: 250px;
+ 
    height: auto;
    width:180px;
    margin: 0 5px;
