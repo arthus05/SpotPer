@@ -3,6 +3,9 @@ import { Header } from "../../components/Header/index";
 
 import { CardFaixa } from "../../components/CardFaixa";
 
+import Adele from '../../utils/imagens/album_Adele.jpg'
+
+import { Container} from "./style";
 //mocado
 
 const faixaMocada = [
@@ -30,9 +33,19 @@ function Album() {
   return (
     <div className="App">
       <Header />
-      <CardFaixa faixas={faixaMocada}/>
+  
 
-     
+      <Container>
+        <div className="box">
+          <img src={Adele} alt=""/>
+          <div></div>
+
+          <button>Título</button>
+
+        </div>
+  
+      
+      </Container>
 
     </div>
   );

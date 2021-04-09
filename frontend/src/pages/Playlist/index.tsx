@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Container, Section, Carousel, Article, Aside} from "./styles";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
@@ -139,7 +139,7 @@ const faixaMocadaBe = [
 
 export function Playlist() {
    
-    const { handlePlaylist, currentPlaylist, handleAddNewPlaylist, allPlaylistBack }: any = usePlaylist();
+    const { setCurrentPlaylist, handlePlaylist, currentPlaylist, handleAddNewPlaylist, allPlaylistBack }: any = usePlaylist();
 
     const[isNewPlaylist, setIsNewPlaylist] = useState(false);
     const[namePlaylist, setNamePlaylist] = useState("");
@@ -148,14 +148,16 @@ export function Playlist() {
     function handleScrollBack() {
         console.log(element_scroll)
         if(element_scroll) {
-            element_scroll.scrollLeft -= 350;
+            var maxScrollLeft = element_scroll.scrollWidth - element_scroll.clientWidth;
+            element_scroll.scrollLeft -= maxScrollLeft;
         }
 
     }
     function handleScrollForward() {
         console.log(element_scroll)
         if(element_scroll) {
-            element_scroll.scrollLeft += 350;
+            var maxScrollLeft = element_scroll.scrollWidth - element_scroll.clientWidth;
+            element_scroll.scrollLeft += maxScrollLeft;
         }
 
     }
@@ -168,7 +170,20 @@ export function Playlist() {
         let element = event.target || HTMLElement;
         setNamePlaylist(element.value)
     }
+    
+    function handleDeleteFaixa(faixa: any) {
+        for(var i = 0; i< currentPlaylist.length; i++) {
+          if(currentPlaylist[i].descricao === faixa) {
+            currentPlaylist.splice(i,1);
+          }
+        }
+        console.log(currentPlaylist)
+  
+      }
 
+    useEffect(()=>{
+        console.log(allPlaylistBack)
+    }, [allPlaylistBack])
     
     return (
         <Container>
@@ -247,13 +262,14 @@ export function Playlist() {
                                     <td>{faixa.tipo_gravacao}</td>
                                     <td>{faixa.time}</td>
                                     <button className="button_remover" onClick={() => 
-                console.log(faixa)
-                }>Remover</button>
+                                        handleDeleteFaixa(faixa.descricao)
+                                    }>Remover</button>
                                     
                                     </tr>
                                 ) )
                                 }
                                 </div>
+                               
                                 <div className="button__concluir">
                                         <button  onClick={() => {
                                             handleAddNewPlaylist(namePlaylist, currentPlaylist);
@@ -297,6 +313,12 @@ export function Playlist() {
                                     <td>{playlist.name}</td>
                                     <td>{playlist.faixas.length}</td>
                                     <td>{playlist.tempo_execucao}</td>
+                                    <button className="button_remover" onClick={() => 
+                                     {   setCurrentPlaylist(playlist.faixas);
+                                        setNamePlaylist(playlist.name);
+                                        setIsNewPlaylist(true);
+                                    }
+                                    }>Editar</button>
                                    
                                     
                                     

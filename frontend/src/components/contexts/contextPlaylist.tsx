@@ -29,6 +29,7 @@ interface PlaylistNewData {
         
       };
       handleAddNewPlaylist: Function;
+    
    
   }
   interface PlaylistProviderProps {
@@ -66,6 +67,8 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
       
 
     }
+
+    
 
     function handleCurrentPlaylist(faixa: any) {
         
@@ -105,7 +108,8 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
         handleCurrentPlaylist,
         setCurrentPlaylist,
         handleAddNewPlaylist,
-        allPlaylistBack
+        allPlaylistBack,
+      
         
       }}
     >

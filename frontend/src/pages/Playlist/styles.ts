@@ -159,18 +159,7 @@ export const Aside = styled.aside`
                 
             }
 
-            .button_remover {
-                height: 100%;
-                border: none;
-
-                padding: 5px 10px;
-                margin: 0 0px 0 10px;
-                color: var(--text);
-                background-color: #222326;
-                border-radius: 25px;
-                
-                cursor: pointer;
-            }
+            
             
         }
     }
@@ -184,6 +173,18 @@ export const Aside = styled.aside`
             height: 1px;
             background: #f1f1f1; 
         }
+    .button_remover {
+                height: 100%;
+                border: none;
+
+                padding: 5px 10px;
+                margin: 0 0px 0 10px;
+                color: var(--text);
+                background-color: #222326;
+                border-radius: 25px;
+                
+                cursor: pointer;
+            }
 
     .minhas__playlist-names {
         width: 100%;
