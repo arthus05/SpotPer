@@ -34,6 +34,10 @@ export const GlobalStyle = createGlobalStyle`
   button, input, textarea, body {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
+    outline: none;
+  }
+  button:hover {
+    opacity: 0.8;
   }
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 500;
