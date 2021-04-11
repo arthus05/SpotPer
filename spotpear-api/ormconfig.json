@@ -1,0 +1,24 @@
+{
+   "type": "mysql",
+   "host": "spotper-aacc.c5odpq0ugb10.us-east-1.rds.amazonaws.com",
+   "port": 3306,
+   "username": "admin",
+   "password": "12345678",
+   "database": "spotper",
+   "synchronize": true,
+   "logging": false,
+   "entities": [
+      "src/models/**/*.ts"
+   ],
+   "migrations": [
+      "src/migration/**/*.ts"
+   ],
+   "subscribers": [
+      "src/subscriber/**/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration",
+      "subscribersDir": "src/subscriber"
+   }
+}
