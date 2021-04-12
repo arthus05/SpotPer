@@ -33,31 +33,17 @@ INSERT INTO faixas_do_interprete(faixa_id, interprete_id)
 
 
 -- SELECTS    
-SELECT * FROM record__company;
 SELECT * FROM composer;
 SELECT * FROM album;
 SELECT * FROM interpreter;
 SELECT * FROM playlist;
 SELECT * FROM type_composition;
 SELECT * FROM track;
+SELECT * FROM record_company;
+SELECT * FROM playlist_track_track;
+desc album;
+desc record__company;
 
 -- DELETES
 DELETE FROM playlist WHERE id = 2;
 
-
-INSERT INTO `spotper`.`album`
-(`id`,
-`description`,
-`date_recording`,
-`date_purchase`,
-`type_purchase`,
-`cost_purchase`,
-`record_company_id`)
-VALUES
-(<{id: }>,
-<{description: }>,
-<{date_recording: }>,
-<{date_purchase: }>,
-<{type_purchase: }>,
-<{cost_purchase: }>,
-<{record_company_id: }>);
