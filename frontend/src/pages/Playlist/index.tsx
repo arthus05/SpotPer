@@ -13,6 +13,7 @@ import album_xuxa from '../../utils/imagens/album_xuxa.jpg'
 import { CardAlbum } from "../../components/CardAlbum";
 import {  usePlaylist } from "../../components/contexts/contextPlaylist";
 import { CardFaixa } from "../../components/CardFaixa";
+import api from "../../services/api";
 
 
 //mocado
@@ -139,7 +140,7 @@ const faixaMocadaBe = [
 
 export function Playlist() {
    
-    const { setCurrentPlaylist, handlePlaylist, currentPlaylist, handleAddNewPlaylist, allPlaylistBack }: any = usePlaylist();
+    const { setCurrentPlaylist, handlePlaylist,setFaixas,faixas, currentPlaylist, handleAddNewPlaylist, allPlaylistBack, albunsBack }: any = usePlaylist();
 
     const[isNewPlaylist, setIsNewPlaylist] = useState(false);
     const[namePlaylist, setNamePlaylist] = useState("");
@@ -181,9 +182,34 @@ export function Playlist() {
   
       }
 
-    useEffect(()=>{
-        console.log(allPlaylistBack)
-    }, [allPlaylistBack])
+      useEffect(()=>{
+      
+        api.get("/track")
+         .then((response) => {
+           setFaixas(response.data)
+           //para cada faixa, veja todos os albuns 
+           var newFaixa:any = [];
+   
+           response.data.map((faixa: any) => {
+             for (var i = 0; i < albunsBack.length ; i++) {
+               if(albunsBack[i].id === faixa.albumId){
+                 newFaixa.push(faixa)
+               }
+            }
+   
+   
+           })
+           setFaixas(newFaixa)
+           
+         
+          
+         }
+         )
+         .catch((err) => {
+           console.error("ops! ocorreu um erro" + err);
+        });
+        console.log("TESTEEEE: ", faixas )
+       }, [albunsBack])
     
     return (
         <Container>
@@ -207,7 +233,7 @@ export function Playlist() {
                         </div>
             
                         <div id="scroll__carousel" >
-                        <CardAlbum faixas={faixaMocada} id="1" image={album_adele} data="20/10/2020" nome="Nova Adele"/>
+                        {/* <CardAlbum faixas={faixaMocada} id="1" image={album_adele} data="20/10/2020" nome="Nova Adele"/>
                         <CardAlbum faixas={faixaMocadaBe} id="2" image={album_Beatles} data="20/10/2000" nome="Beatles"/>
                         <CardAlbum faixas={faixaMocadaSelv} id="3" image={album_Selvagens} data="20/10/2020" nome="Paraíso Portátil"/>
                         <CardAlbum faixas={faixaMocada} id="4" image={album_xuxa} data="20/10/2010" nome="Só para baixinhos 3"/>
@@ -222,9 +248,15 @@ export function Playlist() {
                         <CardAlbum faixas={faixaMocada} id="1" image={album_adele} data="20/10/2020" nome="Nova Adele"/>
                         <CardAlbum faixas={faixaMocadaBe} id="2" image={album_Beatles} data="20/10/2000" nome="Beatles"/>
                         <CardAlbum faixas={faixaMocadaSelv} id="3" image={album_Selvagens} data="20/10/2020" nome="Paraíso Portátil"/>
-                        <CardAlbum faixas={faixaMocada} id="4" image={album_xuxa} data="20/10/2010" nome="Só para baixinhos 3"/>
+                        <CardAlbum faixas={faixaMocada} id="4" image={album_xuxa} data="20/10/2010" nome="Só para baixinhos 3"/> */}
 
-              
+                        { albunsBack?.map((album: any) =>(
+                                <>
+                                    <CardAlbum faixas={faixas} id={album.id} image={album_xuxa} data={album.date_purchase} nome={album.description}/>
+
+                                </>
+                                ) )
+                                }
                         
                         
                         </div>

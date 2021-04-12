@@ -18,7 +18,7 @@ export const Routes = [
     },
     {
         method: 'get',
-        route: '/album',
+        route: '/album/:id',
         controller: AlbumController,
         action: 'one'
     },
@@ -68,7 +68,7 @@ export const Routes = [
     },
     {
         method: 'get',
-        route: '/musicalPeriod',
+        route: '/musicalPeriod/:id',
         controller: MusicalPeriodController,
         action: 'one'
     },
@@ -93,7 +93,7 @@ export const Routes = [
     },
     {
         method: 'get',
-        route: '/composer',
+        route: '/composer:id',
         controller: ComposerController,
         action: 'one'
     },
@@ -118,7 +118,7 @@ export const Routes = [
     },
     {
         method: 'get',
-        route: '/track',
+        route: '/track/:id',
         controller: TrackController,
         action: 'one'
     },
@@ -143,7 +143,7 @@ export const Routes = [
     },
     {
         method: 'get',
-        route: '/playlist',
+        route: '/playlist/:id',
         controller: PlaylistController,
         action: 'one'
     },
@@ -168,7 +168,7 @@ export const Routes = [
     },
     {
         method: 'get',
-        route: '/interpreter',
+        route: '/interpreter/:id',
         controller: InterpreterController,
         action: 'one'
     },
@@ -193,7 +193,7 @@ export const Routes = [
     },
     {
         method: 'get',
-        route: '/typeComposition',
+        route: '/typeComposition/:id',
         controller: TypeCompositionController,
         action: 'one'
     },

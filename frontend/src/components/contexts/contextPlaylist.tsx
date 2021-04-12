@@ -18,13 +18,7 @@ interface PlaylistNewData {
       tipo_gravacao: string;
       }>;
     albunsBack: Array< {
-        id: string;
-        descricao: string;
-        date_purchase: Date;
-        type_purchase: string;
-        date_recording: Date;
-        cost_purchase: number;
-        faixas: Array<{}>
+        
         }>;
   allPlaylistBack: {
         tempo_execucao: number;
@@ -48,6 +42,16 @@ interface PlaylistNewData {
         
       };
       handleAddNewPlaylist: Function;
+      setFaixas: Function;
+      faixas: Array<{
+        id: number;
+        time_execution: number;
+        type_recording: string;
+        number_track: number;
+        description: string;
+        albumId: number;
+        typeCompositionId: number;
+      }>
     
    
   }
@@ -67,7 +71,34 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
     const[allPlaylistBack, setAllPlaylistBack]  = useState<any>([]
 
     );
-    const[albunsBack, setAlbunsBack] = useState<any>([])
+
+    const[faixas, setFaixas] = useState<any>([{
+        id: 1,
+        time_execution: 30,
+        type_recording: "nao sei 2",
+        number_track: 12,
+        description: "teste",
+        albumId: 2,
+        typeCompositionId: 1,
+     },
+     {
+      id: 2,
+      time_execution: 30,
+      type_recording: "nao  2",
+      number_track: 12,
+      description: "teste",
+      albumId: 2,
+      typeCompositionId: 1,
+   },
+
+    ])
+    const[albunsBack, setAlbunsBack] = useState<any>([
+      {
+        id: 2,
+        description: "Xuxa so para baixinhos 5",
+        date_purchase: '2001/01/01'
+      }
+    ])
     const[recordCompany, setRecordCompany] = useState<any>([])
 
     //Buscando na API 
@@ -81,7 +112,42 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
      });
+     api.get("/album")
+      .then((response) => {setAlbunsBack(response.data)
+        console.log(response.data)
+      }
+      )
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+     });
     }, [])
+    // useEffect(()=>{
+      
+    //  api.get("/track")
+    //   .then((response) => {
+    //     setFaixas(response.data)
+    //     //para cada faixa, veja todos os albuns 
+    //     var newFaixa:any = [];
+
+    //     response.data.map((faixa: any) => {
+    //       for (var i = 0; i < albunsBack.length ; i++) {
+    //         if(albunsBack[i].id === faixa.albumId){
+              
+    //         }
+    //      }
+
+
+    //     })
+        
+      
+       
+    //   }
+    //   )
+    //   .catch((err) => {
+    //     console.error("ops! ocorreu um erro" + err);
+    //  });
+    //  console.log("TESTEEEE: ", faixas)
+    // }, [albunsBack])
 
     function handleAddNewPlaylist(name: string, faixas: any) {
 
@@ -144,7 +210,9 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
         handleAddNewPlaylist,
         allPlaylistBack,
         albunsBack,
-        recordCompany
+        recordCompany,
+        faixas,
+        setFaixas
       
         
       }}

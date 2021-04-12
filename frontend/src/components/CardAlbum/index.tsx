@@ -1,5 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
+
+import moment from 'moment'
 import {  usePlaylist } from '../contexts/contextPlaylist';
 
 import { ContainerAlbum } from './styles'
@@ -31,7 +33,7 @@ export function CardAlbum({ image,
 
             <div className="container__titles">
                 <h1>{nome}</h1>
-                <h2>{data}</h2>
+                <h2>{moment(data).utc().format('MM/DD/YYYY')}</h2>
             </div>
 
 
