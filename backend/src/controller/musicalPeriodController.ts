@@ -1,10 +1,10 @@
 import "reflect-metadata"; 
 import { createConnection, getRepository } from "typeorm";
 import { Request, Response } from 'express';
-import { Musical_Period } from "../models/MusicalPeriod";
+import { MusicalPeriod } from "../models/MusicalPeriod";
 
 export class MusicalPeriodController {
-    private musicalPeriodRepository = getRepository(Musical_Period)
+    private musicalPeriodRepository = getRepository(MusicalPeriod)
 
     async all(req: Request, res: Response) {
         return this.musicalPeriodRepository.find()

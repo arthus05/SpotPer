@@ -30,7 +30,7 @@ export const Routes = [
     },
     {
         method: 'delete',
-        route: '/album',
+        route: '/album/:id',
         controller: AlbumController,
         action: 'remove'
     },
@@ -55,7 +55,7 @@ export const Routes = [
     },
     {
         method: 'delete',
-        route: '/recordCompany',
+        route: '/recordCompany/:id',
         controller: RecordCompanyController,
         action: 'remove'
     },
@@ -80,7 +80,7 @@ export const Routes = [
     },
     {
         method: 'delete',
-        route: '/musicalPeriod',
+        route: '/musicalPeriod/:id',
         controller: MusicalPeriodController,
         action: 'remove'
     },
@@ -105,7 +105,7 @@ export const Routes = [
     },
     {
         method: 'delete',
-        route: '/composer',
+        route: '/composer/:id',
         controller: ComposerController,
         action: 'remove'
     },
@@ -130,7 +130,7 @@ export const Routes = [
     },
     {
         method: 'delete',
-        route: '/track',
+        route: '/track/:id',
         controller: TrackController,
         action: 'remove'
     },
@@ -155,7 +155,7 @@ export const Routes = [
     },
     {
         method: 'delete',
-        route: '/playlist',
+        route: '/playlist/:id',
         controller: PlaylistController,
         action: 'remove'
     },
@@ -180,7 +180,7 @@ export const Routes = [
     },
     {
         method: 'delete',
-        route: '/interpreter',
+        route: '/interpreter/:id',
         controller: InterpreterController,
         action: 'remove'
     },
@@ -205,7 +205,7 @@ export const Routes = [
     },
     {
         method: 'delete',
-        route: '/typeComposition',
+        route: '/typeComposition/:id',
         controller: TypeCompositionController,
         action: 'remove'
     }

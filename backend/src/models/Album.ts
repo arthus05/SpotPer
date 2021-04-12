@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm";
 import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
-import { Record_Company } from "../models/RecordCompany";
+import { RecordCompany } from "../models/RecordCompany";
 import { Track } from "./Track";
 
 @Entity()
@@ -11,23 +11,23 @@ export class Album {
 
     @Column()
     description: string;
-
+    
     @Column()
-    date_purchase: Date;
-
+    datePurchase: Date;
+    
     @Column()
-    type_purchase: string;
-
+    typePurchase: string;
+    
     @Column()
-    date_recording: Date;
-
+    dateRecording: Date;
+    
     @Column()
-    cost_purchase: number;
+    costPurchase: number;
 
     @OneToMany(() => Track, track => track.album)
-    track: Track[]
+    track: Track[];
 
-    @ManyToOne(() => Record_Company, record_company => record_company.album)
-    record_company: Record_Company;
+    @ManyToOne(() => RecordCompany, recordCompany => recordCompany.album)
+    recordCompany: RecordCompany;
     
 }

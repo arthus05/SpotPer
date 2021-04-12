@@ -1,6 +1,7 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable} from "typeorm";
 import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
-import { Musical_Period } from "../models/MusicalPeriod";
+import { MusicalPeriod } from "../models/MusicalPeriod";
+import { Track } from "../models/Track";
 
 @Entity()
 export class Composer {
@@ -12,18 +13,25 @@ export class Composer {
     name: string;
 
     @Column()
-    city_birth: string;
+    cityBirth: string;
 
     @Column()
-    country_birth: string;
+    countryBirth: string;
 
     @Column()
-    date_birth: Date;
+    dateBirth: Date;
 
     @Column()
-    date_death: Date;
+    dateDeath: Date;
+
+    @Column()
+    musicalPeriodId: number;
 
     //aqui fica o periodo musical e nao o album ok ?
-    @ManyToOne(() => Musical_Period, musical_period => musical_period.composer)
-    musical_period: Musical_Period;
+    @ManyToOne(() => MusicalPeriod, musicalPeriod => musicalPeriod.composer)
+    musicalPeriod: MusicalPeriod;
+
+    @ManyToMany(() => Track)
+    @JoinTable()
+    track: Track[];
 }
