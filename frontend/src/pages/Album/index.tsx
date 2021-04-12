@@ -6,6 +6,7 @@ import { CardFaixa } from "../../components/CardFaixa";
 import Adele from '../../utils/imagens/album_Adele.jpg'
 
 import { Container} from "./style";
+import { usePlaylist } from "../../components/contexts/contextPlaylist";
 //mocado
 
 const faixaMocada = [
@@ -30,6 +31,8 @@ const faixaMocada = [
 ]
 
 function Album() {
+  const { recordCompany }: any = usePlaylist();
+
   return (
     <div className="App">
       <Header />
