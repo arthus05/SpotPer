@@ -192,6 +192,13 @@ export const Aside = styled.aside`
         height: 80%;
       
         padding: 10px 0;
+
+        a {
+            border: none;
+            outline: none;
+            text-decoration: none;
+            
+        }
         
    tr {
        height: 45px;

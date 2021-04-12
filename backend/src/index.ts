@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import * as cors from 'cors';
 import * as express from 'express'
 import { Request, Response } from "express"
 import * as bodyParser from 'body-parser'
@@ -8,7 +9,8 @@ import { Routes } from './routes'
 
 createConnection().then(async connection => {
 
-    const app = express(); 
+    const app = express();
+    app.use(cors()) 
     app.use(bodyParser.json());
 
     Routes.forEach(route => { 

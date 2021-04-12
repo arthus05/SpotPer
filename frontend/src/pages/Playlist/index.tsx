@@ -8,12 +8,13 @@ import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 // MOCADOS
 import album_adele from '../../utils/imagens/album_Adele.jpg'
 import album_Selvagens from '../../utils/imagens/album_selvagens.jpg'
-import album_Beatles from '../../utils/imagens/album_beatles.jpg'
+import semImg from '../../utils/imagens/semImg.jpg'
 import album_xuxa from '../../utils/imagens/album_xuxa.jpg'
 import { CardAlbum } from "../../components/CardAlbum";
 import {  usePlaylist } from "../../components/contexts/contextPlaylist";
 import { CardFaixa } from "../../components/CardFaixa";
 import api from "../../services/api";
+import { Link } from "react-router-dom";
 
 
 //mocado
@@ -140,10 +141,10 @@ const faixaMocadaBe = [
 
 export function Playlist() {
    
-    const { setCurrentPlaylist, handlePlaylist,setFaixas,faixas, currentPlaylist, handleAddNewPlaylist, allPlaylistBack, albunsBack }: any = usePlaylist();
+    const {namePlaylist, setNamePlaylist, setCurrentPlaylist, handlePlaylist,setFaixas,faixas, currentPlaylist, handleAddNewPlaylist, allPlaylistBack, albunsBack }: any = usePlaylist();
 
     const[isNewPlaylist, setIsNewPlaylist] = useState(false);
-    const[namePlaylist, setNamePlaylist] = useState("");
+    
     // let test  = document.getElementById("scroll__carousel") || null;
     let element_scroll : any = (document.getElementById("scroll__carousel") || HTMLInputElement);
     function handleScrollBack() {
@@ -181,43 +182,18 @@ export function Playlist() {
         console.log(currentPlaylist)
   
       }
+    function handleCriarPlaylist(faixa: any) {
+       
+  
+      }
 
-      useEffect(()=>{
-      
-        api.get("/track")
-         .then((response) => {
-           setFaixas(response.data)
-           //para cada faixa, veja todos os albuns 
-           var newFaixa:any = [];
-   
-           response.data.map((faixa: any) => {
-             for (var i = 0; i < albunsBack.length ; i++) {
-               if(albunsBack[i].id === faixa.albumId){
-                 newFaixa.push(faixa)
-               }
-            }
-   
-   
-           })
-           setFaixas(newFaixa)
-           
-         
-          
-         }
-         )
-         .catch((err) => {
-           console.error("ops! ocorreu um erro" + err);
-        });
-        console.log("TESTEEEE: ", faixas )
-       }, [albunsBack])
     
     return (
         <Container>
             <Header/>
             <Section>
                 <Article>
-
-                
+                  
                     <Carousel>
                         <div className="carousel__top">
                         <h1>Seus Álbums</h1>
@@ -233,26 +209,10 @@ export function Playlist() {
                         </div>
             
                         <div id="scroll__carousel" >
-                        {/* <CardAlbum faixas={faixaMocada} id="1" image={album_adele} data="20/10/2020" nome="Nova Adele"/>
-                        <CardAlbum faixas={faixaMocadaBe} id="2" image={album_Beatles} data="20/10/2000" nome="Beatles"/>
-                        <CardAlbum faixas={faixaMocadaSelv} id="3" image={album_Selvagens} data="20/10/2020" nome="Paraíso Portátil"/>
-                        <CardAlbum faixas={faixaMocada} id="4" image={album_xuxa} data="20/10/2010" nome="Só para baixinhos 3"/>
-                        <CardAlbum faixas={faixaMocada} id="1" image={album_adele} data="20/10/2020" nome="Nova Adele"/>
-                        <CardAlbum faixas={faixaMocadaBe} id="2" image={album_Beatles} data="20/10/2000" nome="Beatles"/>
-                        <CardAlbum faixas={faixaMocadaSelv} id="3" image={album_Selvagens} data="20/10/2020" nome="Paraíso Portátil"/>
-                        <CardAlbum faixas={faixaMocada} id="4" image={album_xuxa} data="20/10/2010" nome="Só para baixinhos 3"/>
-                        <CardAlbum faixas={faixaMocada} id="1" image={album_adele} data="20/10/2020" nome="Nova Adele"/>
-                        <CardAlbum faixas={faixaMocadaBe} id="2" image={album_Beatles} data="20/10/2000" nome="Beatles"/>
-                        <CardAlbum faixas={faixaMocadaSelv} id="3" image={album_Selvagens} data="20/10/2020" nome="Paraíso Portátil"/>
-                        <CardAlbum faixas={faixaMocada} id="4" image={album_xuxa} data="20/10/2010" nome="Só para baixinhos 3"/>
-                        <CardAlbum faixas={faixaMocada} id="1" image={album_adele} data="20/10/2020" nome="Nova Adele"/>
-                        <CardAlbum faixas={faixaMocadaBe} id="2" image={album_Beatles} data="20/10/2000" nome="Beatles"/>
-                        <CardAlbum faixas={faixaMocadaSelv} id="3" image={album_Selvagens} data="20/10/2020" nome="Paraíso Portátil"/>
-                        <CardAlbum faixas={faixaMocada} id="4" image={album_xuxa} data="20/10/2010" nome="Só para baixinhos 3"/> */}
 
                         { albunsBack?.map((album: any) =>(
                                 <>
-                                    <CardAlbum faixas={faixas} id={album.id} image={album_xuxa} data={album.date_purchase} nome={album.description}/>
+                                    <CardAlbum faixas={album.track} id={album.id} image={semImg} data={album.date_purchase} nome={album.description}/>
 
                                 </>
                                 ) )
@@ -290,11 +250,11 @@ export function Playlist() {
                                     <div className="new__playlist-names">
                                     { currentPlaylist?.map((faixa: any) =>(
                                     <tr key={faixa.id}>
-                                    <td>{faixa.descricao}</td>
-                                    <td>{faixa.tipo_gravacao}</td>
-                                    <td>{faixa.time}</td>
+                                    <td>{faixa.description}</td>
+                                    <td>{faixa.numberTrack}</td>
+                                    <td>{faixa.timeExecution}</td>
                                     <button className="button_remover" onClick={() => 
-                                        handleDeleteFaixa(faixa.descricao)
+                                        handleDeleteFaixa(faixa.description)
                                     }>Remover</button>
                                     
                                     </tr>
@@ -305,7 +265,7 @@ export function Playlist() {
                                 <div className="button__concluir">
                                         <button  onClick={() => {
                                             handleAddNewPlaylist(namePlaylist, currentPlaylist);
-                                            setNamePlaylist("");
+                                            setNamePlaylist(namePlaylist);
                                             setIsNewPlaylist(false)
                                         }
                                             
@@ -343,14 +303,15 @@ export function Playlist() {
                         { allPlaylistBack?.map((playlist: any) =>(
                                     <tr key={playlist.id}>
                                     <td>{playlist.name}</td>
-                                    <td>{playlist.faixas.length}</td>
-                                    <td>{playlist.tempo_execucao}</td>
+                                    <td>{playlist.track.length}</td>
+                                    <td>{playlist.timeExecution}</td>
+                                    <Link to="/albums" >
                                     <button className="button_remover" onClick={() => 
-                                     {   setCurrentPlaylist(playlist.faixas);
+                                     {   setCurrentPlaylist(playlist.track);
                                         setNamePlaylist(playlist.name);
-                                        setIsNewPlaylist(true);
+                                       
                                     }
-                                    }>Editar</button>
+                                    }>Editar</button></Link>
                                    
                                     
                                     

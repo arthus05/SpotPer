@@ -1,6 +1,8 @@
 import React, { createContext, useState, useEffect, ReactNode, useContext  } from 'react';
 import api from '../../services/api';
 
+import moment from 'moment'
+
 interface PlaylistNewData {
   handlePlaylist:Array< {
     id: number;
@@ -20,15 +22,15 @@ interface PlaylistNewData {
     albunsBack: Array< {
         
         }>;
-  allPlaylistBack: {
-        tempo_execucao: number;
-       
+    allPlaylistBack: {
+      timeExecution: number;
+      numberExecutions: number;
         name: string;
-        faixas: Array< {
-          id: number;
-          descricao: string;
-          time: number;
-          tipo_gravacao: string;
+        track: Array< {
+          id: string;
+          description: string;
+          numberTrack: number;
+          timeExecution: string;
           }>;
         
       };
@@ -51,7 +53,9 @@ interface PlaylistNewData {
         description: string;
         albumId: number;
         typeCompositionId: number;
-      }>
+      }>;
+      namePlaylist: string;
+      setNamePlaylist: Function;
     
    
   }
@@ -71,7 +75,7 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
     const[allPlaylistBack, setAllPlaylistBack]  = useState<any>([]
 
     );
-
+    const[namePlaylist, setNamePlaylist] = useState("");
     const[faixas, setFaixas] = useState<any>([{
         id: 1,
         time_execution: 30,
@@ -93,11 +97,7 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
 
     ])
     const[albunsBack, setAlbunsBack] = useState<any>([
-      {
-        id: 2,
-        description: "Xuxa so para baixinhos 5",
-        date_purchase: '2001/01/01'
-      }
+     
     ])
     const[recordCompany, setRecordCompany] = useState<any>([])
 
@@ -114,54 +114,50 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
      });
      api.get("/album")
       .then((response) => {setAlbunsBack(response.data)
-        console.log(response.data)
+
       }
       )
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
      });
-    }, [])
-    // useEffect(()=>{
-      
-    //  api.get("/track")
-    //   .then((response) => {
-    //     setFaixas(response.data)
-    //     //para cada faixa, veja todos os albuns 
-    //     var newFaixa:any = [];
-
-    //     response.data.map((faixa: any) => {
-    //       for (var i = 0; i < albunsBack.length ; i++) {
-    //         if(albunsBack[i].id === faixa.albumId){
-              
-    //         }
-    //      }
-
-
-    //     })
+     api.get("/playlist")
+      .then((response) => {setAllPlaylistBack(response.data)
         
-      
-       
-    //   }
-    //   )
-    //   .catch((err) => {
-    //     console.error("ops! ocorreu um erro" + err);
-    //  });
-    //  console.log("TESTEEEE: ", faixas)
-    // }, [albunsBack])
+        console.log(response.data, "Aqui")
+      }
+      )
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+     });
+    setCurrentPlaylist([])
+    }, [])
 
     function handleAddNewPlaylist(name: string, faixas: any) {
 
       var timeOverall = 0;
-      faixas.map((faixa: any) => timeOverall= timeOverall+  faixa.time)
+      faixas.map((faixa: any) => timeOverall= timeOverall+  faixa.timeExecution)
         const newPlaylist = {
-          tempo_execucao : timeOverall,
+          timeExecution : timeOverall,
+          numberExecutions: 2,
+          dateCreation: moment(),
+          dateLastExecution: moment(),
           name: name,
-          faixas: faixas
+          track: faixas
           
       }
       setAllPlaylistBack((prev:any) => {
         return [...allPlaylistBack, newPlaylist]
       })
+
+      api.post("/playlist",newPlaylist)
+      .then((response) => {
+        console.log(response.data)
+
+      }
+      )
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+     });
 
       setCurrentPlaylist([])
       
@@ -175,15 +171,16 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
 
       const newPlaylist = {
           id: faixa.id,
-          descricao: faixa.descricao,
-          time: faixa.time,
-          tipo_gravacao: faixa.tipo_gravacao
+          description: faixa.description,
+          timeExecution: faixa.timeExecution,
+          numberTrack: faixa.numberTrack,
+          typeRecording: faixa.typeRecording
       }
 
       var playlistAux = [...currentPlaylist, newPlaylist]
       var cont = 0;
       for (var i = 0; i < playlistAux.length ; i++) {
-        if(playlistAux[i].descricao === newPlaylist.descricao){
+        if(playlistAux[i].description === newPlaylist.description){
           cont++;
         }
      }
@@ -212,7 +209,9 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
         albunsBack,
         recordCompany,
         faixas,
-        setFaixas
+        setFaixas,
+        namePlaylist,
+        setNamePlaylist
       
         
       }}

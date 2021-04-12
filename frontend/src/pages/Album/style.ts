@@ -3,52 +3,65 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 .box {
+
+  padding: 25px;
   display: flex;
-  flex-wrap: wrap;
+
   flex-direction: column;
-  align-content: space-between;
-  width: 200px;
-  height: 150px;
-  position: relative;
-  >div {
-    width: 200px;
-  height: 150px;
-  
-    position: absolute;
-    top: 0;
-    left: 0;
+ 
+  width: 100%;
+  min-height: 500px;
+
+}.minhas__playlist-names {
+        width: 100%;
+        overflow: auto;
+        height: 80%;
+      
+        padding: 10px 0;
+
+        a {
+            border: none;
+            outline: none;
+            text-decoration: none;
+            
+        }
+        
+   tr {
+       height: 45px;
+       color: #EEEFF0;
+        :first-child {
+        background-color: #222326;
+        
+    }
+
+    th {
+    padding: 12px 15px; 
+    width: 250px;
+   
+    
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+
+    @media only screen and (max-width: 370px) {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+
+    @media only screen and (max-width: 310px) {
+      font-size: 13.5px;
+    }
   }
 
-  img {
-    width: 100%;
+  td {
+    max-width: 250px;
+    padding: 12px 15px;
+  
+    
+    font-family: 'Poppins', sans-serif;
 
   }
-  button {
-    position: absolute;
-    top: 100px;
-    left: 25%;
-    border: none;
-    color: #fff;
-    background: none;
-    font-size: 2rem;
-  }
-  button:hover {
-    /* padding: 10px; */
-    border-bottom: 2px solid #fff;
-    border-bottom-width: thin;
-  }
-  
-}
-.box:hover { 
-  background: rgba(112,128,144, 0.5);
-  cursor: pointer;
-}
-div {
-  
-    width: 100px;
-    height: 100px;
-    background: pink;
-    margin: 5px;
-}
+   }
 
   `

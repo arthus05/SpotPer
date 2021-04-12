@@ -6,9 +6,9 @@ import {ContainerFaixa} from './style'
 interface PropsCardFaixa{
     faixas: Array<{
         id: string;
-    descricao: string;
-    time: number;
-    tipo_gravacao: string;
+        description: string;
+        numberTrack: number;
+        timeExecution: string;
     }>
     
 }
@@ -31,9 +31,9 @@ export function CardFaixa({faixas}: PropsCardFaixa) {
             <hr/>
             { faixas.map((faixa) =>(
                  <tr key={faixa.id}>
-                 <td>{faixa.descricao}</td>
-                 <td>{faixa.tipo_gravacao}</td>
-                 <td>{faixa.time}</td>
+                 <td>{faixa.description}</td>
+                 <td>{faixa.numberTrack}</td>
+                 <td>{faixa.timeExecution}</td>
                  <td >
 			        <button className="button_adicionar" onClick={() => 
                 handleCurrentPlaylist(faixa)

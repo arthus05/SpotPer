@@ -24,14 +24,9 @@ export function Header() {
 
           </li>
           <li>
-          <Link to="/albums" >ALBUMS</Link>
+          <Link to="/albums" >EDITAR PLAYLIST</Link>
           </li>
-          <li>
-          <Link to="/artistas" >ARTISTAS</Link>
-          </li>
-          <li>
-          <Link to="/gravadoras" >GRAVADORAS</Link>
-          </li>
+         
         </ul>
       </section>
 

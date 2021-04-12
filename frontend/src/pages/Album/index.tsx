@@ -31,29 +31,48 @@ const faixaMocada = [
 ]
 
 function Album() {
-  const { recordCompany }: any = usePlaylist();
+  const {namePlaylist, setNamePlaylist, currentPlaylist}: any = usePlaylist();
+
 
   return (
     <div className="App">
       <Header />
-  
+   
 
       <Container>
         <div className="box">
-          <img src={Adele} alt=""/>
-          <div></div>
+          <h1>Editar Playlist</h1>
+        
 
-          <button>Título</button>
-          {
-            recordCompany?.map
-          }
-
-          { recordCompany?.map((gravadora: any) =>(
-              <>
-                <h1>{gravadora.name}</h1>
-              </>
+          <div className="minhas__playlist-names">
+                            <table>
+                            <tr>
+                                <th>NOME</th>
+                                <th>TEMPO DE EXECUÇÃO</th>
+                                <th>TIPO</th>
+                                <th>NÚMERO</th>
+                                
+                                {/* <th style={{width: "120px"}}>TEMPO</th> */}
+                              
+                                
+                            </tr>
+                           
+                        { currentPlaylist?.map((playlist: any) =>(
+                                    <tr key={playlist.id}>
+                                    <td>{playlist.description}</td>
+                                  
+                                    <td>{playlist.timeExecution}</td>
+                                    <td>{playlist.typeRecording}</td>
+                                    <td>{playlist.numberTrack}</td>
+                                  
+                                
+                                    
+                                    
+                                    </tr>
                                 ) )
                                 }
+                         </table>
+                        </div>
         </div>
   
       
