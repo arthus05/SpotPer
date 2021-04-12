@@ -24,6 +24,9 @@ export class Track {
     @Column()
     albumId: number;
 
+    @Column()
+    typeCompositionId: number;
+
     @ManyToOne(() => Album, album => album.track)
     album: Album
     
