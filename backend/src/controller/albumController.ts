@@ -1,8 +1,7 @@
 import "reflect-metadata"; 
-import { createConnection, getRepository } from "typeorm";
+import { getRepository } from "typeorm";
 import { Request, Response } from 'express';
 import { Album } from "../models/Album";
-// import { Record_Company } from "../models/RecordCompany"
 
 export class AlbumController {
     private albumRepository = getRepository(Album)

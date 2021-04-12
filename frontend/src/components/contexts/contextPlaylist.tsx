@@ -74,7 +74,10 @@ export function PlaylistsProvider({children, ...rest}: PlaylistProviderProps) {
 
     useEffect(()=>{
       api.get("/recordCompany")
-      .then((response) => setRecordCompany(response.data))
+      .then((response) => {setRecordCompany(response.data)
+        console.log(response.data)
+      }
+      )
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
      });

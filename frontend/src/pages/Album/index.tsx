@@ -44,7 +44,16 @@ function Album() {
           <div></div>
 
           <button>Título</button>
+          {
+            recordCompany?.map
+          }
 
+          { recordCompany?.map((gravadora: any) =>(
+              <>
+                <h1>{gravadora.name}</h1>
+              </>
+                                ) )
+                                }
         </div>
   
       

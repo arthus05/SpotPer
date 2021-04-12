@@ -1,6 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinTable} from "typeorm";
 import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
-import { Type_Composition } from "../models/TypeComposition";
+import { TypeComposition } from "../models/TypeComposition";
+import { Album } from "./Album";
 
 @Entity()
 export class Track {
@@ -19,8 +20,11 @@ export class Track {
 
     @Column()
     description: string;
+
+    @ManyToOne(() => Album, album => album.track)
+    album: Album
     
-    @ManyToOne(() => Type_Composition, typeComposition => typeComposition.id)
-    type_composition: Type_Composition;
+    @ManyToOne(() => TypeComposition, typeComposition => typeComposition.id)
+    type_composition: TypeComposition;
 
 }
