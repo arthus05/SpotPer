@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm";
 import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
 import { Record_Company } from "../models/RecordCompany";
 import { Track } from "./Track";
@@ -24,7 +24,7 @@ export class Album {
     @Column()
     cost_purchase: number;
 
-    @ManyToOne(() => Track, track => track.album)
+    @OneToMany(() => Track, track => track.album)
     track: Track[]
 
     @ManyToOne(() => Record_Company, record_company => record_company.album)
