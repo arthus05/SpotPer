@@ -10,13 +10,13 @@ export class Track {
     id: number;
 
     @Column()
-    time_execution: number;
+    timeExecution: number;
 
     @Column()
-    type_recording: string;
+    typeRecording: string;
 
     @Column()
-    number_track: number;
+    numberTrack: number;
 
     @Column()
     description: string;
@@ -31,6 +31,6 @@ export class Track {
     album: Album
     
     @ManyToOne(() => TypeComposition, typeComposition => typeComposition.id)
-    type_composition: TypeComposition;
+    typeComposition: TypeComposition;
 
 }

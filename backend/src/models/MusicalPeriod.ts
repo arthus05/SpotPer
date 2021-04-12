@@ -3,7 +3,7 @@ import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
 import { Composer } from "../models/Composer"
 
 @Entity()
-export class Musical_Period {
+export class MusicalPeriod {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -12,12 +12,12 @@ export class Musical_Period {
     description: string;
 
     @Column()
-    time_start: Date;
+    timeStart: Date;
 
     @Column()
-    time_end: Date;
+    timeEnd: Date;
 
-    @OneToMany(() => Composer, composer => composer.musical_period)
+    @OneToMany(() => Composer, composer => composer.musicalPeriod)
     composer: Composer[];
 
 }

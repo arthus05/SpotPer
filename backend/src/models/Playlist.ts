@@ -12,16 +12,16 @@ export class Playlist {
     name: string;
 
     @Column()
-    date_creation: string;
+    dateCreation: string;
 
     @Column()
-    time_execution: number;
+    timeExecution: number;
 
     @Column()
-    number_executions: number;
+    numberExecutions: number;
 
     @Column()
-    date_last_execution: Date;
+    dateLastExecution: Date;
 
     @ManyToMany(() => Track)
     @JoinTable()

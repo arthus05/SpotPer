@@ -11,7 +11,7 @@ export class TypeComposition {
     @Column()
     description: string;
 
-    @OneToMany(() => Track, track => track.type_composition)
-    type_composition: Track[];
+    @OneToMany(() => Track, track => track.typeComposition)
+    typeComposition: Track[];
 
 }
