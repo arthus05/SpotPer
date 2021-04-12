@@ -27,5 +27,4 @@ export class TrackController {
         const tracks = await this.trackRepository.find({ where: { album } });
         return tracks;
     }
-
 }

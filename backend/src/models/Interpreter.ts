@@ -17,4 +17,5 @@ export class Interpreter {
     @ManyToMany(() => Track)
     @JoinTable()
     track: Track[];
+
 }
