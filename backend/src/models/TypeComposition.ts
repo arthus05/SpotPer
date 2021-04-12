@@ -3,7 +3,7 @@ import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
 import { Track } from "../models/Track"
 
 @Entity()
-export class Type_Composition {
+export class TypeComposition {
 
     @PrimaryGeneratedColumn()
     id: number;

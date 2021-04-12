@@ -2,6 +2,10 @@ import { AlbumController } from './controller/albumController'
 import { RecordCompanyController } from './controller/recordCompanyController'
 import { MusicalPeriodController } from './controller/musicalPeriodController'
 import { ComposerController } from './controller/composerController'
+import { TrackController } from './controller/trackController'
+import { PlaylistController } from './controller/playlistController'
+import { InterpreterController } from './controller/interpreterController'
+import { TypeCompositionController } from './controller/typeCompositionController'
 
 
 export const Routes = [
@@ -104,5 +108,106 @@ export const Routes = [
         route: '/composer',
         controller: ComposerController,
         action: 'remove'
+    },
+    // Track
+    {
+        method: 'get',
+        route: '/track',
+        controller: TrackController,
+        action: 'all'
+    },
+    {
+        method: 'get',
+        route: '/track',
+        controller: TrackController,
+        action: 'one'
+    },
+    {
+        method: 'post',
+        route: '/track',
+        controller: TrackController,
+        action: 'save'
+    },
+    {
+        method: 'delete',
+        route: '/track',
+        controller: TrackController,
+        action: 'remove'
+    },
+    // PLaylist
+    {
+        method: 'get',
+        route: '/playlist',
+        controller: PlaylistController,
+        action: 'all'
+    },
+    {
+        method: 'get',
+        route: '/playlist',
+        controller: PlaylistController,
+        action: 'one'
+    },
+    {
+        method: 'post',
+        route: '/playlist',
+        controller: PlaylistController,
+        action: 'save'
+    },
+    {
+        method: 'delete',
+        route: '/playlist',
+        controller: PlaylistController,
+        action: 'remove'
+    },
+    // Interpreter
+    {
+        method: 'get',
+        route: '/interpreter',
+        controller: InterpreterController,
+        action: 'all'
+    },
+    {
+        method: 'get',
+        route: '/interpreter',
+        controller: InterpreterController,
+        action: 'one'
+    },
+    {
+        method: 'post',
+        route: '/interpreter',
+        controller: InterpreterController,
+        action: 'save'
+    },
+    {
+        method: 'delete',
+        route: '/interpreter',
+        controller: InterpreterController,
+        action: 'remove'
+    },
+    // Type Composition
+    {
+        method: 'get',
+        route: '/typeComposition',
+        controller: typeCompositionController,
+        action: 'all'
+    },
+    {
+        method: 'get',
+        route: '/typeComposition',
+        controller: typeCompositionController,
+        action: 'one'
+    },
+    {
+        method: 'post',
+        route: '/typeComposition',
+        controller: typeCompositionController,
+        action: 'save'
+    },
+    {
+        method: 'delete',
+        route: '/typeComposition',
+        controller: typeCompositionController,
+        action: 'remove'
     }
+    
 ]
