@@ -7,7 +7,7 @@ export class PlaylistController {
     private playlistRepository = getRepository(Playlist)
 
     async all(req: Request, res: Response) {
-        return this.playlistRepository.find()
+        return this.playlistRepository.find({relations: ["track"]})
     }
     
     async one(req: Request, res: Response) {

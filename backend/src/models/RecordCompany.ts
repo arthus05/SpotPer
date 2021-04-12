@@ -3,7 +3,7 @@ import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
 import { Album } from "../models/Album";
 
 @Entity()
-export class Record_Company {
+export class RecordCompany {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -18,11 +18,11 @@ export class Record_Company {
     address: string;
 
     @Column()
-    address_number: number;
+    addressNumber: number;
 
     @Column()
     homepage: string;
 
-    @OneToMany(() => Album, album => album.record_company)
+    @OneToMany(() => Album, album => album.recordCompany)
     album: Album[];
 }

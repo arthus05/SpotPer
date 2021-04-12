@@ -10,27 +10,21 @@ export class Track {
     id: number;
 
     @Column()
-    time_execution: number;
+    timeExecution: number;
 
     @Column()
-    type_recording: string;
+    typeRecording: string;
 
     @Column()
-    number_track: number;
+    numberTrack: number;
 
     @Column()
     description: string;
 
-    @Column()
-    albumId: number;
-
-    @Column()
-    typeCompositionId: number;
-
     @ManyToOne(() => Album, album => album.track)
-    album: Album
+    album: Album;
     
     @ManyToOne(() => TypeComposition, typeComposition => typeComposition.id)
-    type_composition: TypeComposition;
+    typeComposition: TypeComposition;
 
 }

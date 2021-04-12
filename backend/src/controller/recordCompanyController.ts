@@ -1,10 +1,10 @@
 import "reflect-metadata";
 import { createConnection, getRepository } from "typeorm";
 import { Request, Response } from 'express'
-import { Record_Company } from "../models/RecordCompany";
+import { RecordCompany } from "../models/RecordCompany";
 
 export class RecordCompanyController {
-    private recordCompanyRepository = getRepository(Record_Company)
+    private recordCompanyRepository = getRepository(RecordCompany)
 
     async all(req: Request, res: Response) {
         return this.recordCompanyRepository.find()
@@ -21,6 +21,7 @@ export class RecordCompanyController {
     async remove(req: Request, res: Response) {
         const recordCompanyToRemove = await this.recordCompanyRepository.findOne(req.params.id)
         await this.recordCompanyRepository.remove(recordCompanyToRemove)
+        return "RecordCompany deleted successfully"
     }
 
 }
